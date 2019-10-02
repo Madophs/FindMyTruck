@@ -187,8 +187,8 @@ demo = {
         Chartist.Pie('#chartPreferences', dataPreferences, optionsPreferences);
 
         Chartist.Pie('#chartPreferences', {
-            labels: ['53%', '36%', '11%'],
-            series: [53, 36, 11]
+            labels: ['65%','35%'],
+            series: [65,35]
         });
 
 
@@ -250,20 +250,19 @@ demo = {
 
         var chartHours = Chartist.Line('#chartHours', dataSales, optionsSales, responsiveSales);
 
-        // lbd.startAnimationForLineChart(chartHours);
+        //lbd.startAnimationForLineChart(chartHours);
 
         var data = {
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
             series: [
-                [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895],
-                [412, 243, 280, 580, 453, 353, 300, 364, 368, 410, 636, 695]
+                [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]
             ]
         };
 
         var options = {
             seriesBarDistance: 10,
             axisX: {
-                showGrid: false
+                showGrid: true
             },
             height: "245px"
         };

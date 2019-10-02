@@ -1,3 +1,20 @@
+<?php
+ 
+$dataPoints = array();
+$y = 10;
+for($i = 0; $i < 10; $i++){
+	break;
+	$y += rand(0.1, 1) * 10; 
+	array_push($dataPoints, array("x" => $i, "y" => $y));
+}
+
+	array_push($dataPoints, array("x" => 0, "y" => 10));
+	array_push($dataPoints, array("x" => 1, "y" => 15));
+	array_push($dataPoints, array("x" => 2, "y" => 30));
+	array_push($dataPoints, array("x" => 3, "y" => 40));
+	array_push($dataPoints, array("x" => 4, "y" => 42));
+?>
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -7,7 +24,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets/img/apple-icon.png') }}">
     <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon.ico') }}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Light Bootstrap Dashboard - Free Bootstrap 4 Admin Dashboard by Creative Tim</title>
+    <title>Jagures Code - ITSCH</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
@@ -70,7 +87,7 @@
                                 <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                                     <i class="nc-icon nc-planet"></i>
                                     <span class="notification">5</span>
-                                    <span class="d-lg-none">Notification</span>
+                                    <span class="d-lg-none">Notificación</span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <a class="dropdown-item" href="#">Notificación 1</a>
@@ -83,7 +100,7 @@
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
                                     <i class="nc-icon nc-zoom-split"></i>
-                                    <span class="d-lg-block">&nbsp;Busqueda</span>
+                                    <span class="d-lg-block">&nbsp;Búsqueda</span>
                                 </a>
                             </li>
                         </ul>
@@ -113,43 +130,24 @@
                         <div class="col-md-4">
                             <div class="card ">
                                 <div class="card-header ">
-                                    <h4 class="card-title">Email Statistics</h4>
-                                    <p class="card-category">Last Campaign Performance</p>
+                                    <h4 class="card-title">Uso del vehiculo</h4>
+                                    <p class="card-category">Reporte del ultimo viaje</p>
                                 </div>
                                 <div class="card-body ">
                                     <div id="chartPreferences" class="ct-chart ct-perfect-fourth"></div>
                                     <div class="legend">
-                                        <i class="fa fa-circle text-info"></i> Open
-                                        <i class="fa fa-circle text-danger"></i> Bounce
-                                        <i class="fa fa-circle text-warning"></i> Unsubscribe
+                                        <i class="fa fa-circle text-info"></i> Uso
+                                        <i class="fa fa-circle text-danger"></i> Inactivo
                                     </div>
                                     <hr>
                                     <div class="stats">
-                                        <i class="fa fa-clock-o"></i> Campaign sent 2 days ago
+                                        <i class="fa fa-clock-o"></i> Actualizado hace 2 días
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-8">
-                            <div class="card ">
-                                <div class="card-header ">
-                                    <h4 class="card-title">Users Behavior</h4>
-                                    <p class="card-category">24 Hours performance</p>
-                                </div>
-                                <div class="card-body ">
-                                    <div id="chartHours" class="ct-chart"></div>
-                                </div>
-                                <div class="card-footer ">
-                                    <div class="legend">
-                                        <i class="fa fa-circle text-info"></i> Open
-                                        <i class="fa fa-circle text-danger"></i> Click
-                                        <i class="fa fa-circle text-warning"></i> Click Second Time
-                                    </div>
-                                    <hr>
-                                    <div class="stats">
-                                        <i class="fa fa-history"></i> Updated 3 minutes ago
-                                    </div>
-                                </div>
+                            <div class="card" id="chartContainer">
                             </div>
                         </div>
                     </div>
@@ -157,20 +155,19 @@
                         <div class="col-md-6">
                             <div class="card ">
                                 <div class="card-header ">
-                                    <h4 class="card-title">2017 Sales</h4>
-                                    <p class="card-category">All products including Taxes</p>
+                                    <h4 class="card-title">Consumo de conbustible 2019 (en pesos)</h4>
+                                    <p class="card-category">Incluyendo impuestos</p>
                                 </div>
                                 <div class="card-body ">
                                     <div id="chartActivity" class="ct-chart"></div>
                                 </div>
                                 <div class="card-footer ">
                                     <div class="legend">
-                                        <i class="fa fa-circle text-info"></i> Tesla Model S
-                                        <i class="fa fa-circle text-danger"></i> BMW 5 Series
+                                        <i class="fa fa-circle text-info"></i> Gasto mensual
                                     </div>
                                     <hr>
                                     <div class="stats">
-                                        <i class="fa fa-check"></i> Data information certified
+                                        <i class="fa fa-check"></i> Información verificada
                                     </div>
                                 </div>
                             </div>
@@ -178,8 +175,8 @@
                         <div class="col-md-6">
                             <div class="card  card-tasks">
                                 <div class="card-header ">
-                                    <h4 class="card-title">Tasks</h4>
-                                    <p class="card-category">Backend development</p>
+                                    <h4 class="card-title">Tareas</h4>
+                                    <p class="card-category">Cumplir con las normas establecidas</p>
                                 </div>
                                 <div class="card-body ">
                                     <div class="table-full-width">
@@ -194,14 +191,8 @@
                                                             </label>
                                                         </div>
                                                     </td>
-                                                    <td>Sign contract for "What are conference organizers afraid of?"</td>
+                                                    <td>Se ha mantenido dentro de la ruta establecida</td>
                                                     <td class="td-actions text-right">
-                                                        <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-link">
-                                                            <i class="fa fa-edit"></i>
-                                                        </button>
-                                                        <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-link">
-                                                            <i class="fa fa-times"></i>
-                                                        </button>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -213,14 +204,8 @@
                                                             </label>
                                                         </div>
                                                     </td>
-                                                    <td>Lines From Great Russian Literature? Or E-mails From My Boss?</td>
+                                                    <td>Ha respetado los limites de velocidad</td>
                                                     <td class="td-actions text-right">
-                                                        <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-link">
-                                                            <i class="fa fa-edit"></i>
-                                                        </button>
-                                                        <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-link">
-                                                            <i class="fa fa-times"></i>
-                                                        </button>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -232,15 +217,9 @@
                                                             </label>
                                                         </div>
                                                     </td>
-                                                    <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
+                                                    <td>Se encuentra a tiempo para su destino
                                                     </td>
                                                     <td class="td-actions text-right">
-                                                        <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-link">
-                                                            <i class="fa fa-edit"></i>
-                                                        </button>
-                                                        <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-link">
-                                                            <i class="fa fa-times"></i>
-                                                        </button>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -252,14 +231,8 @@
                                                             </label>
                                                         </div>
                                                     </td>
-                                                    <td>Create 4 Invisible User Experiences you Never Knew About</td>
+                                                    <td>El comsumo de combustible estuvo dentro de los parámetros previstos</td>
                                                     <td class="td-actions text-right">
-                                                        <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-link">
-                                                            <i class="fa fa-edit"></i>
-                                                        </button>
-                                                        <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-link">
-                                                            <i class="fa fa-times"></i>
-                                                        </button>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -271,14 +244,8 @@
                                                             </label>
                                                         </div>
                                                     </td>
-                                                    <td>Read "Following makes Medium better"</td>
+                                                    <td>El vehículo no se detuvo periodos largos de tiempo</td>
                                                     <td class="td-actions text-right">
-                                                        <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-link">
-                                                            <i class="fa fa-edit"></i>
-                                                        </button>
-                                                        <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-link">
-                                                            <i class="fa fa-times"></i>
-                                                        </button>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -290,14 +257,8 @@
                                                             </label>
                                                         </div>
                                                     </td>
-                                                    <td>Unfollow 5 enemies from twitter</td>
+                                                    <td>Llegó a su destino</td>
                                                     <td class="td-actions text-right">
-                                                        <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-link">
-                                                            <i class="fa fa-edit"></i>
-                                                        </button>
-                                                        <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-link">
-                                                            <i class="fa fa-times"></i>
-                                                        </button>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -307,7 +268,7 @@
                                 <div class="card-footer ">
                                     <hr>
                                     <div class="stats">
-                                        <i class="now-ui-icons loader_refresh spin"></i> Updated 3 minutes ago
+                                        <i class="now-ui-icons loader_refresh spin"></i> Actualizado hace 10 min
                                     </div>
                                 </div>
                             </div>
@@ -328,7 +289,6 @@
 <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
 <script src="../assets/js/plugins/bootstrap-switch.js"></script>
 <!--  Google Maps Plugin    -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
 <!--  Chartist Plugin  -->
 <script src="../assets/js/plugins/chartist.min.js"></script>
 <!--  Notifications Plugin    -->
@@ -337,11 +297,69 @@
 <script src="../assets/js/light-bootstrap-dashboard.js?v=2.0.0 " type="text/javascript"></script>
 <!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
 <script src="../assets/js/demo.js"></script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <script type="text/javascript">
+        var dataPoints = <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>;
+    
+    var chart = new CanvasJS.Chart("chartContainer", {
+        theme: "light2",
+        title: {
+            text: "Monitoreo de velocidad en tiempo real (Km/h)"
+        },
+        axisX:{
+            title: "Tiempo transcurrido en minutos"
+        },
+        axisY:{
+            includeZero: false,
+            suffix: "Km/h"
+        },
+        data: [{
+            type: "line",
+            yValueFormatString: "#,##0.0#",
+            toolTipContent: "{y} Mbps",
+            dataPoints: dataPoints,
+            markerColor : "#ff0000",
+            lineThickness: 5
+        }]
+    });
+    chart.render();
+    
+    var updateInterval = 1500;
+    setInterval(function () { updateChart() }, updateInterval);
+    
+    var xValue = dataPoints.length;
+    var yValue = dataPoints[dataPoints.length - 1].y;
+    var limit = 100;
+
+    function updateChart() {
+        var flip = Math.ceil(Math.random()*10);
+        var randomValue = (Math.random())*10;
+        if(flip % 2 == 0) randomValue *= -1;
+        randomValue = Math.ceil(randomValue);
+        while(yValue + randomValue > 100){
+            randomValue -= 3;
+        }
+        while(yValue + randomValue < 30){
+            randomValue += 5;
+        }
+        yValue += randomValue;
+        console.log(randomValue);
+        dataPoints.push({ x: xValue, y: yValue });
+        xValue++;
+        if(dataPoints.length > 30)
+            dataPoints.shift();
+        chart.render();
+    };
+
     $(document).ready(function() {
         // Javascript method's body can be found in assets/js/demos.js
         demo.initDashboardPageCharts();
+        updateChart();
     });
 </script>
+
+
+
+
 
 </html>

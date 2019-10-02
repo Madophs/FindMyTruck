@@ -19,6 +19,7 @@ class CreateViajesTable extends Migration
             $table->float('salida_latitud');
             $table->float('destino_longitud');
             $table->float('destino_latitud');
+            $table->integer('temperatura');
             $table->integer('viaje_data_id')->unsigned();
             $table->integer('conductor_id')->unsigned();
             $table->integer('vehiculo_id')->unsigned();

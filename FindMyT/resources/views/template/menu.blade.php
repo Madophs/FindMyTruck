@@ -36,18 +36,6 @@
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="./typography.html">
-                            <i class="nc-icon nc-paper-2"></i>
-                            <p>Typography</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="./icons.html">
-                            <i class="nc-icon nc-atom"></i>
-                            <p>Icons</p>
-                        </a>
-                    </li>
-                    <li>
                         <a class="nav-link" href="{{ route('maps') }}">
                             <i class="nc-icon nc-pin-3"></i>
                             <p>Maps</p>
