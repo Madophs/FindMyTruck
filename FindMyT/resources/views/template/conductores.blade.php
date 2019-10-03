@@ -1,17 +1,3 @@
-<!-- 
-=========================================================
- Light Bootstrap Dashboard - v2.0.1
-=========================================================
-
- Product Page: https://www.creative-tim.com/product/light-bootstrap-dashboard
- Copyright 2019 Creative Tim (https://www.creative-tim.com)
- Licensed under MIT (https://github.com/creativetimofficial/light-bootstrap-dashboard/blob/master/LICENSE)
-
- Coded by Creative Tim
-
-=========================================================
-
- The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.  -->
  <!DOCTYPE html>
 
 <html lang="en">
@@ -95,7 +81,7 @@
                                 </p>
                                 <form id="logout-form2" action="{{ route('logout')}}" method="POST" style="display: none;">
                                     {{ csrf_field() }}
-                                </form>     
+                                </form>
                             </li>
                         </ul>
                     </div>
@@ -103,9 +89,9 @@
             </nav>
             <!-- End Navbar -->
 
-
             <div style="width: 80%; margin: auto; padding: 30px;">
-                <a href="{{ route('conductores.agregar') }}" class="btn btn-primary float-left mb-1">
+                @include('template.flash-message')
+                <a href="{{ route('conductores.crear') }}" class="btn btn-primary float-left mb-1">
                     <img src="{{ asset('images/add-24.png') }}" alt="">
                 </a>
                 <div style = "clear: both;"></div>
@@ -116,56 +102,30 @@
                             <th scope="col" style="color: white; font-weight: bold;">Nombre</th>
                             <th scope="col" style="color: white; font-weight: bold;">Teléfono</th>
                             <th scope="col" style="color: white; font-weight: bold;">Domicilio</th>
-                            <th scope="col" style="color: white; font-weight: bold;">No de viajes</th>
                             <th scope="col" style="color: white; font-weight: bold;">Acción</th>
                         </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Alejandro</td>
-                        <td>7861234578</td>
-                        <td>Maratio</td>
-                        <td>80</td>
-                        <td>
-                            <a href="" class="btn btn-warning">
-                                <img src="{{ asset('images/edit-2-24.png') }}" alt="">
-                            </a>
-                            <a href="" class="btn btn-danger">
-                                <img src="{{ asset('images/x-mark-3-24.png') }}" alt="">
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Miguel</td>
-                        <td>7864568912</td>
-                        <td>Ciudad Hidalgo</td>
-                        <td>45</td>
-                        <td>
-                            <a href="" class="btn btn-warning">
-                                <img src="{{ asset('images/edit-2-24.png') }}" alt="">
-                            </a>
-                            <a href="" class="btn btn-danger">
-                                <img src="{{ asset('images/x-mark-3-24.png') }}" alt="">
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>7867868961278</td>
-                        <td>Ciudad Hidalgo</td>
-                        <td>35</td>
-                        <td>
-                            <a href="" class="btn btn-warning">
-                                <img src="{{ asset('images/edit-2-24.png') }}" alt="">
-                            </a>
-                            <a href="" class="btn btn-danger">
-                                <img src="{{ asset('images/x-mark-3-24.png') }}" alt="">
-                            </a>
-                        </td>
-                    </tr>
+                        @php
+                            $i = 1
+                        @endphp
+                        @foreach($conductores as $conductor)
+                            <tr>
+                                <td>{{ $i++ }}</td>
+                                <td>{{ $conductor->nombre }}</td>
+                                <td>{{ $conductor->telefono }}</td>
+                                <td>{{ $conductor->domicilio }}</td>
+                                <td>
+                                    <a href="{{ route('conductores.editar', $conductor->id ) }}" class="btn btn-warning">
+                                        <img src="{{ asset('images/edit-2-24.png') }}" alt="">
+                                    </a>
+                                    <a href="{{ route('conductores.eliminar', $conductor->id) }}" class="btn btn-danger">
+                                        <img src="{{ asset('images/x-mark-3-24.png') }}" alt="">
+                                    </a>
+                                </td>
+                            </tr>
+                        @endforeach
+
                     </tbody>
                 </table>
             </div>
@@ -211,7 +171,7 @@
 
 </body>
 <!--   Core JS Files   -->
-<script src="../assets/js/core/jquery.3.2.1.min.js" type="text/javascript"></script>
+<script src="{{ asset('assets/js/core/jquery.3.2.1.min.js') }}" type="text/javascript"></script>
 <script src="../assets/js/core/popper.min.js" type="text/javascript"></script>
 <script src="../assets/js/core/bootstrap.min.js" type="text/javascript"></script>
 <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
@@ -223,23 +183,9 @@
 <script src="../assets/js/light-bootstrap-dashboard.js?v=2.0.0 " type="text/javascript"></script>
 <!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
 <script>
-    function agregarCanal(){
-        var conductorNombre = $("#nombre").val();
-        var conductorNumero = $("#canal").val();
-        if(conductorNombre != "" && conductorNumero != ""){
-            $('#msj-success').html("Canal "+conductorNombre+" fue guardado correctamente correctamente!!!");
-            $('#msj-success').css('display','block');
-            $('#msj-success').delay(2000).fadeOut(300);
-            setTimeout(function() {
-                window.location.replace("{{ route('conductores') }}");
-            }, 2500);
-            
-        }else{
-            $('#msj-error').html("Favor de llenar todos los campos.");
-            $('#msj-error').css('display','block');
-            $('#msj-error').delay(2000).fadeOut(300);
-        }
-    }
+    $(document).ready(function(){
+        $('.mdshide').delay(2000).fadeOut(300);
+    })
 </script>
 
 </html>

@@ -45,24 +45,6 @@ for($i = 0; $i < 10; $i++){
         Tip 2: you can also add an image using data-image tag
     -->
         @include('template.menu')
-    <div style="width: 70%; margin: auto; padding: 30px;">
-        
-        <div class="alert alert-success" role="alert" id="msj-success" style="display: none;">
-            This is a success alert—check it out!
-        </div>
-        <div class="alert alert-danger" role="alert" id="msj-error" style="display: none;">
-        </div>
-        <div class="form-group">
-        <label for="nombre">Nombre</label>
-            <input name="name" type="text" class="form-control" id="nombre" placeholder="Nombre del canal" required>
-        </div>
-        <div class="form-group">
-        <label for="canal"> Canal</label>
-            <input name="canal" type="text" class="form-control" id="canal" placeholder="Número del canal" required>
-        </div>
-        <button name="" type="submit" class="btn btn-primary" onclick="agregarCanal();">Guardar</button>
-    
-    </div>
         </div>
         <div class="main-panel">
             

@@ -30,23 +30,15 @@ class HomeController extends Controller
         return view('template.user');
     }
 
-    public function conductores(){
-        return view('template.conductores');
-    }
-
-    public function conductoresAgregar(){
-        return view('template.conductores_agregar');
-    }
-
-    public function conductoresEditar(){
-        return view('template.conductores_editar');
-    }
-
     public function vehiculos(){
         return view('template.vehiculos');
     }
 
     public function maps(){
         return view('template.maps');
+    }
+
+    public function polygons(){
+        return view('template.polygon');
     }
 }

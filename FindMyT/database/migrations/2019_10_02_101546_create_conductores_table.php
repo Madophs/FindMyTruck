@@ -17,7 +17,6 @@ class CreateConductoresTable extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->string('correo');
-            $table->integer('no_viajes')->unsigned();
             $table->string('telefono');
             $table->string('domicilio');
             $table->timestamps();
