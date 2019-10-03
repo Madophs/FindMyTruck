@@ -13,10 +13,9 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
     <!-- CSS Files -->
-    <link href="../assets/css/light-bootstrap-dashboard.css?v=2.0.0 " rel="stylesheet" />
+    <link href="{{ asset('assets/css/light-bootstrap-dashboard.css?v=2.0.0') }} " rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link href="../assets/css/demo.css" rel="stylesheet" />
-
+    <link href="{{ asset('assets/css/demo.css" rel="stylesheet') }}" />
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" />
 </head>
 
@@ -27,14 +26,14 @@
         Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
 
         Tip 2: you can also add an image using data-image tag
-    -->
+            -->
             @include('template.menu')
         </div>
         <div class="main-panel">
-            <!-- Navbar -->
-            <nav class="navbar navbar-expand-lg " color-on-scroll="500">
+           <!-- Navbar -->
+           <nav class="navbar navbar-expand-lg " color-on-scroll="500">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href=""> Vehiculos </a>
+                    <a class="navbar-brand" href=""> Vehiculo</a>
                     <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-bar burger-lines"></span>
                         <span class="navbar-toggler-bar burger-lines"></span>
@@ -52,7 +51,7 @@
                                 <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                                     <i class="nc-icon nc-planet"></i>
                                     <span class="notification">5</span>
-                                    <span class="d-lg-none">Notification</span>
+                                    <span class="d-lg-none">Notificación</span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <a class="dropdown-item" href="#">Notificación 1</a>
@@ -89,51 +88,37 @@
             </nav>
             <!-- End Navbar -->
 
-            <div style="width: 80%; margin: auto; padding: 30px;">
-                @include('template.flash-message')
-                <a href="{{ route('vehiculos.crear') }}" class="btn btn-primary float-left mb-1">
-                    <img src="{{ asset('images/add-24.png') }}" alt="">
-                </a>
-                <div style = "clear: both;"></div>
-                <table class="table table-bordered">
-                    <thead style="background-color: black;">
-                        <tr>
-                            <th scope="col" style="color: white; font-weight: bold;">#</th>
-                            <th scope="col" style="color: white; font-weight: bold;">Marca</th>
-                            <th scope="col" style="color: white; font-weight: bold;">Modelo</th>
-                            <th scope="col" style="color: white; font-weight: bold;">Fabricante</th>
-                            <th scope="col" style="color: white; font-weight: bold;">Color</th>
-                            <th scope="col" style="color: white; font-weight: bold;">Año</th>
-                            <th scope="col" style="color: white; font-weight: bold;">No Placas</th>
-                            <th scope="col" style="color: white; font-weight: bold;">Acción</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @php
-                            $i = 1
-                        @endphp
-                        @foreach($vehiculos as $vehiculo)
-                            <tr>
-                                <td>{{ $i++ }}</td>
-                                <td>{{ $vehiculo->marca }}</td>
-                                <td>{{ $vehiculo->modelo }}</td>
-                                <td>{{ $vehiculo->fabricante }}</td>
-                                <td>{{ $vehiculo->color }}</td>
-                                <td>{{ $vehiculo->anio }}</td>
-                                <td>{{ $vehiculo->no_placas }}</td>
-                                <td>
-                                    <a href="{{ route('vehiculos.editar', $vehiculo->id ) }}" class="btn btn-warning">
-                                        <img src="{{ asset('images/edit-2-24.png') }}" alt="">
-                                    </a>
-                                    <a href="{{ route('vehiculos.eliminar', $vehiculo->id) }}" class="btn btn-danger">
-                                        <img src="{{ asset('images/x-mark-3-24.png') }}" alt="">
-                                    </a>
-                                </td>
-                            </tr>
-                        @endforeach
-
-                    </tbody>
-                </table>
+            <div style="width: 70%; margin: auto; padding: 30px;">
+                <form action="{{ route('vehiculos.guardar') }}" method="post">
+                    @csrf
+                    <div class="alert alert-danger" role="alert" id="msj-error" style="display: none;">
+                    </div>
+                    <div class="form-group">
+                    <label for="marca">Marca</label>
+                        <input name="marca" type="text" class="form-control" id="marca" placeholder="Marca" required>
+                    </div>
+                    <div class="form-group">
+                    <label for="modelo">Modelo</label>
+                        <input name="modelo" type="text" class="form-control" id="canal" placeholder="Modelo" required>
+                    </div>
+                    <div class="form-group">
+                    <label for="fabricante">Fabricante</label>
+                        <input name="fabricante" type="text" class="form-control" id="canal" placeholder="Fabricante" required>
+                    </div>
+                    <div class="form-group">
+                    <label for="color">Color</label>
+                        <input name="color" type="text" class="form-control" id="canal" placeholder="Color" required>
+                    </div>
+                    <div class="form-group">
+                    <label for="no_placas">No Placas</label>
+                        <input name="no_placas" type="text" class="form-control" id="canal" placeholder="No de placas" required>
+                    </div>
+                    <div class="form-group">
+                    <label for="anio">Año</label>
+                        <input name="anio" type="text" class="form-control" id="canal" placeholder="Año" required>
+                    </div>
+                    <input type="submit" class="btn btn-primary" value="Guardar">
+                </form>
             </div>
 
 
@@ -148,7 +133,7 @@
                             </li>
                             <li>
                                 <a href="#">
-                                    Company
+                                    ITSCH
                                 </a>
                             </li>
                             <li>
@@ -178,20 +163,21 @@
 </body>
 <!--   Core JS Files   -->
 <script src="{{ asset('assets/js/core/jquery.3.2.1.min.js') }}" type="text/javascript"></script>
-<script src="../assets/js/core/popper.min.js" type="text/javascript"></script>
-<script src="../assets/js/core/bootstrap.min.js" type="text/javascript"></script>
+<script src="{{ asset('assets/js/core/popper.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('assets/js/core/bootstrap.min.js') }}" type="text/javascript"></script>
 <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
-<script src="../assets/js/plugins/bootstrap-switch.js"></script>
+<script src="{{ asset('assets/js/plugins/bootstrap-switch.js') }}"></script>
 <!--  Chartist Plugin  -->
 <!--  Notifications Plugin    -->
-<script src="../assets/js/plugins/bootstrap-notify.js"></script>
+<script src="{{ asset('assets/js/plugins/bootstrap-notify.js') }}"></script>
 <!-- Control Center for Light Bootstrap Dashboard: scripts for the example pages etc -->
-<script src="../assets/js/light-bootstrap-dashboard.js?v=2.0.0 " type="text/javascript"></script>
-<!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
-<script>
-    $(document).ready(function(){
-        $('.mdshide').delay(2000).fadeOut(300);
-    })
+<script src="{{ asset('assets/js/light-bootstrap-dashboard.js?v=2.0.0') }} " type="text/javascript"></script>
+<!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project!') ' -->
+<script src="{{ asset('assets/js/demo.js') }}"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        // Javascript method's body can be found in assets/js/demos.js
+        demo.initDashboardPageCharts();
+    });
 </script>
-
 </html>

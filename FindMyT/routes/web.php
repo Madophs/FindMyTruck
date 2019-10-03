@@ -24,8 +24,14 @@ Route::get('/conductores/crear','ConductoresController@crear')->name('conductore
 Route::post('/conductores/guardar','ConductoresController@guardar')->name('conductores.guardar');
 Route::get('/conductores/editar/{id}','ConductoresController@editar')->name('conductores.editar');
 Route::post('/conductores/actualizar', 'ConductoresController@actualizar')->name('conductores.actualizar');
-route::get('/conductores/eliminar/{id}', 'ConductoresController@eliminar')->name('conductores.eliminar');
+Route::get('/conductores/eliminar/{id}', 'ConductoresController@eliminar')->name('conductores.eliminar');
 Route::get('/vehiculos','HomeController@vehiculos')->name('vehiculos');
 Route::get('/maps', 'HomeController@maps')->name('maps');
 Route::get('/localizaciones', 'HomeController@polygons')->name('polygons');
+Route::get('/vehiculos', 'VehiculosController@vehiculos')->name('vehiculos');
+Route::get('/vehiculos/crear', 'VehiculosController@crear')->name('vehiculos.crear');
+Route::post('/vehiculos/guardar','VehiculosController@guardar')->name('vehiculos.guardar');
+Route::get('/vehiculos/editar/{id}', 'VehiculosController@editar')->name('vehiculos.editar');
+Route::post('/vehiculos/actualizar','VehiculosController@actualizar')->name('vehiculos.actualizar');
+Route::get('/vehiculos/eliminar/{id}','VehiculosController@eliminar')->name('vehiculos.eliminar');
 
